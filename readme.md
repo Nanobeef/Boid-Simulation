@@ -67,14 +67,24 @@ The most complete and fastest simulation uses integer coordinates. This is becau
 
 
 
-# Pictures
-		
-		
+## Pictures
+
+### First Version		
 <img width="1770" height="1438" alt="screenshot-20250708-140338" src="https://github.com/user-attachments/assets/bf3246e7-aa8a-4d68-b848-81e38d0fcf62" />
+<img width="2208" height="1441" alt="screenshot-20251110-175604" src="https://github.com/user-attachments/assets/8ec42f5d-24f1-4386-9064-c9d586c83a42" />
 
-	
+### Second Version
+<img width="1376" height="1397" alt="screenshot-20251111-153911" src="https://github.com/user-attachments/assets/d5440e70-4a1c-4d1a-a560-0ac5cb7f6cc5" />
+
+### Third Version
 
 
-	
+<img width="1194" height="1326" alt="screenshot-20251111-085022" src="https://github.com/user-attachments/assets/ec96e649-0879-4da5-92c4-e38eeba59858" />
+<img width="1126" height="1206" alt="screenshot-20251111-135448" src="https://github.com/user-attachments/assets/6a4d628c-a55c-46fe-ada6-d0c3d94f45a8" />
+<img width="2559" height="1439" alt="screenshot-20251111-154320" src="https://github.com/user-attachments/assets/950c65a6-baed-430a-8e32-747a06d41a4a" />
+
+#### Off-by-one bug
+<img width="2164" height="1439" alt="screenshot-20251106-205157" src="https://github.com/user-attachments/assets/bb18c64c-95d3-4da6-a951-6b313d51e6d1" />
+
 
 
