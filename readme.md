@@ -6,7 +6,7 @@
 
 ## Video
 
-[Video Title]](https://www.youtube.com/watch?v=https://youtu.be/DN0mCzWGres)
+https://youtu.be/DN0mCzWGres
 
 ## About
 
