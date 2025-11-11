@@ -44,15 +44,13 @@ This is the 3rd iteration of this type of simulation that I have made.
 3.) Integer Coordinates
 - signed-32 velocity
 - unsigned-32 position
+- Temporarily converted to floating point within the final stage.
+- Better thread pool and thread grouping.
 
 
 The interactions of boids can be very simple, so full real numbers are not always required, although they are useful.
 
 The most complete and fastest simulation uses integer coordinates. This is because many values and constants could be easily aligned to a power of two.
-
-
-	
-...
 
 ## Project Modules
 
@@ -61,10 +59,43 @@ The most complete and fastest simulation uses integer coordinates. This is becau
 - Rendering: boids, overlay, vertex buffers.
 - Small GUI
 - Window and Events
-- Utility: Memory allocation, custom printf.
+- Utility: Arene memory allocation, custom printf.
+
+## Third-Party Libraries
+
+- Simd Everywhere
+- FreeType2
 
 
+# Status
 
+## Optimization
+
+As I said, my goal is to simulate 1 million particles at in 7 ms or less. I still need around a 8x speedup. I will only focus on the final stage for now, because it uses the majority of the cpu cycle budget. There are a few optimizations that I will be making:
+
+### High Impact
+- Vector instructions for final (resolve) stage, target avx512 (16xf32). This alone should give around a 8x speedup.
+- Combine the three spatial searches (seperation, alignment, cohesion) into one search. 2-3x
+
+### Low Impact
+- When two particles are on top of eachother, only perform one search. This can help when the boids are packed tightly. More niche.
+- Compress data before sending to GPU (32-bit to 16-bit scalars). The effectivness of the will depends on transfer speed, it will show when simulating many millions of particles at once.
+
+### Complete
+- Thread pool: I can more easily use 32 threads instead of 1. There is still some unused cpu time and concurrecy overhead. ~24x
+- Thread grouping: This improved the cache hit rate, especially for atomic operations. The grid build would get slower when more threads were used. ~2x
+- Thread early exit. Allow threads to exit in the middle of stage, after a task is complete. This add a little bit of overhead (~100us) but the application is more responsive.
+- Storing back particles in a more sequential order. ~4x for all but last stage. When I pulled this off the grid building stages went from 4ms down to 1ms.
+- Vector instructions for construct stage, 4xf32 accumulate.
+
+### Honorable Mention
+- I had left profiling enabled (gcc -p), this disabled inlining. This took a while to figure out. ~10x for final stage.
+
+## GUI
+- Its it a huge time saver to have a few buttons and sliders on the screen.
+- Transfer from an old codebase.
+- This gui looks good, however the code is terrible. There are too many switch statements and it is diffucult to modify. This will get a ground up remake soon, but it is good enough for now.
+- Need duplicate state: one for main thread, and one for thread pool.
 
 
 ## Pictures
