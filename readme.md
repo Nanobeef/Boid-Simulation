@@ -6,7 +6,7 @@
 
 ## Video
 
-[![Watch the video](https://img.youtube.com/vi/_5tFXJQIzi4/0.jpg)](https://www.youtube.com/watch?v=DN0mCzWGres)
+[![Watch the video](https://www.youtube.com/watch?v=DN0mCzWGres)
 
 ## About
 
